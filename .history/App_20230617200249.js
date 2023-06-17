@@ -21,22 +21,20 @@ export default function App() {
   };
 
   return (
-    <>
     <SafeAreaView style={styles.container}>
-    <View style={{ width: 300, height: 300, backgroundColor: '#10B981', position: 'absolute', borderRadius: 150, bottom: -72, right: -66 }}></View>
-      <View style={{ width: 300, height: 300, backgroundColor: '#FFA500', position: 'absolute', borderRadius: 150, top: -72, left: -66 }}></View>
       <Text h4 style={styles.title}>3x3 Matrix Transpose Calculator</Text>
       <View style={styles.inputContainer}>
         {matrix.map((row, rowIndex) => (
           <View style={styles.row} key={rowIndex}>
             {row.map((col, colIndex) => (
-              <Input
-                key={colIndex}
-                value={matrix[rowIndex][colIndex].toString()}
-                onChangeText={(value) => handleInputChange(value, rowIndex, colIndex)}
-                keyboardType="numeric"
-                containerStyle={styles.input}
-              />
+              <View style={styles.inputWrapper} key={colIndex}>
+                <Input
+                  value={matrix[rowIndex][colIndex].toString()}
+                  onChangeText={(value) => handleInputChange(value, rowIndex, colIndex)}
+                  keyboardType="numeric"
+                  containerStyle={styles.input}
+                />
+              </View>
             ))}
           </View>
         ))}
@@ -53,28 +51,26 @@ export default function App() {
           {result.map((row, rowIndex) => (
             <View style={styles.row} key={rowIndex}>
               {row.map((col, colIndex) => (
-                <Input
-                  key={colIndex}
-                  value={result[rowIndex][colIndex].toString()}
-                  editable={false}
-                  containerStyle={styles.resultInput}
-                />
+                <View style={styles.inputWrapper} key={colIndex}>
+                  <Input
+                    value={result[rowIndex][colIndex].toString()}
+                    editable={false}
+                    containerStyle={styles.resultInput}
+                  />
+                </View>
               ))}
             </View>
           ))}
         </View>
       )}
     </SafeAreaView>
-    </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    position: 'relative',
-    paddingHorizontal: 20,
-    paddingVertical: 48,
+    padding: 20,
     backgroundColor: '#fff',
   },
   title: {
@@ -89,8 +85,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginBottom: 10,
   },
+  inputWrapper: {
+    alignItems: 'center',
+  },
   input: {
     flex: 1,
+    width: 80, // Adjust this value as needed
   },
   buttonContainer: {
     marginBottom: 20,
@@ -103,5 +103,7 @@ const styles = StyleSheet.create({
   },
   resultInput: {
     flex: 1,
+    backgroundColor: '#f2f2f2',
+    textAlign: 'center',
   },
 });

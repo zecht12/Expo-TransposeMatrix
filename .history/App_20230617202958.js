@@ -23,8 +23,6 @@ export default function App() {
   return (
     <>
     <SafeAreaView style={styles.container}>
-    <View style={{ width: 300, height: 300, backgroundColor: '#10B981', position: 'absolute', borderRadius: 150, bottom: -72, right: -66 }}></View>
-      <View style={{ width: 300, height: 300, backgroundColor: '#FFA500', position: 'absolute', borderRadius: 150, top: -72, left: -66 }}></View>
       <Text h4 style={styles.title}>3x3 Matrix Transpose Calculator</Text>
       <View style={styles.inputContainer}>
         {matrix.map((row, rowIndex) => (
@@ -64,6 +62,8 @@ export default function App() {
           ))}
         </View>
       )}
+      <View style={{ width: 300, height: 300, backgroundColor: '#10B981', position: 'absolute', borderRadius: 150, bottom: -42, right: -48 }}></View>
+      <View style={{ width: 300, height: 300, backgroundColor: '#B45309', position: 'absolute', borderRadius: 150, top: -48, left: -48 }}></View>
     </SafeAreaView>
     </>
   );
@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   title: {
+    position:'absolute',
     textAlign: 'center',
     marginBottom: 20,
   },

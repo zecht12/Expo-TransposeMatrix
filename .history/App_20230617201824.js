@@ -21,10 +21,7 @@ export default function App() {
   };
 
   return (
-    <>
     <SafeAreaView style={styles.container}>
-    <View style={{ width: 300, height: 300, backgroundColor: '#10B981', position: 'absolute', borderRadius: 150, bottom: -72, right: -66 }}></View>
-      <View style={{ width: 300, height: 300, backgroundColor: '#FFA500', position: 'absolute', borderRadius: 150, top: -72, left: -66 }}></View>
       <Text h4 style={styles.title}>3x3 Matrix Transpose Calculator</Text>
       <View style={styles.inputContainer}>
         {matrix.map((row, rowIndex) => (
@@ -36,6 +33,7 @@ export default function App() {
                 onChangeText={(value) => handleInputChange(value, rowIndex, colIndex)}
                 keyboardType="numeric"
                 containerStyle={styles.input}
+                inputStyle={styles.inputText}
               />
             ))}
           </View>
@@ -46,6 +44,7 @@ export default function App() {
         title="Calculate Transpose"
         onPress={calculateTranspose}
         containerStyle={styles.buttonContainer}
+        buttonStyle={styles.button}
       />
       {result && (
         <View style={styles.resultContainer}>
@@ -58,21 +57,22 @@ export default function App() {
                   value={result[rowIndex][colIndex].toString()}
                   editable={false}
                   containerStyle={styles.resultInput}
+                  inputStyle={styles.resultInputText}
                 />
               ))}
             </View>
           ))}
         </View>
       )}
+        <View style={styles.greenCircle}></View>
+      <View style={styles.amberCircle}></View>
     </SafeAreaView>
-    </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    position: 'relative',
     paddingHorizontal: 20,
     paddingVertical: 48,
     backgroundColor: '#fff',
@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
   title: {
     textAlign: 'center',
     marginBottom: 20,
+    color: 'purple',
   },
   inputContainer: {
     marginBottom: 20,
@@ -91,17 +92,29 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
+    backgroundColor: '#ffffff',
+  },
+  inputText: {
+    color: 'black',
   },
   buttonContainer: {
     marginBottom: 20,
+  },
+  button: {
+    backgroundColor: 'purple',
   },
   resultContainer: {
     marginBottom: 20,
   },
   resultText: {
     marginBottom: 10,
+    color: 'purple',
   },
   resultInput: {
     flex: 1,
+    backgroundColor: '#ffffff',
+  },
+  resultInputText: {
+    color: 'black',
   },
 });

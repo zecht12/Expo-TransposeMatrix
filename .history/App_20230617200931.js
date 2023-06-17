@@ -21,10 +21,7 @@ export default function App() {
   };
 
   return (
-    <>
     <SafeAreaView style={styles.container}>
-    <View style={{ width: 300, height: 300, backgroundColor: '#10B981', position: 'absolute', borderRadius: 150, bottom: -72, right: -66 }}></View>
-      <View style={{ width: 300, height: 300, backgroundColor: '#FFA500', position: 'absolute', borderRadius: 150, top: -72, left: -66 }}></View>
       <Text h4 style={styles.title}>3x3 Matrix Transpose Calculator</Text>
       <View style={styles.inputContainer}>
         {matrix.map((row, rowIndex) => (
@@ -36,6 +33,7 @@ export default function App() {
                 onChangeText={(value) => handleInputChange(value, rowIndex, colIndex)}
                 keyboardType="numeric"
                 containerStyle={styles.input}
+                inputStyle={styles.inputText}
               />
             ))}
           </View>
@@ -58,6 +56,7 @@ export default function App() {
                   value={result[rowIndex][colIndex].toString()}
                   editable={false}
                   containerStyle={styles.resultInput}
+                  inputStyle={styles.resultInputText}
                 />
               ))}
             </View>
@@ -65,16 +64,13 @@ export default function App() {
         </View>
       )}
     </SafeAreaView>
-    </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    position: 'relative',
-    paddingHorizontal: 20,
-    paddingVertical: 48,
+    padding: 20,
     backgroundColor: '#fff',
   },
   title: {
@@ -92,6 +88,9 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
   },
+  inputText: {
+    textAlign: 'center',
+  },
   buttonContainer: {
     marginBottom: 20,
   },
@@ -103,5 +102,9 @@ const styles = StyleSheet.create({
   },
   resultInput: {
     flex: 1,
+    backgroundColor: '#f2f2f2',
+  },
+  resultInputText: {
+    textAlign: 'center',
   },
 });

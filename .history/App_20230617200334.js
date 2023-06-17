@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View, SafeAreaView } from 'react-native';
 import { Button, Input, Text } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { create, all } from 'mathjs';
+import { create, all, ceilDependencies } from 'mathjs';
 const math = create(all);
 
 export default function App() {
@@ -21,10 +21,7 @@ export default function App() {
   };
 
   return (
-    <>
     <SafeAreaView style={styles.container}>
-    <View style={{ width: 300, height: 300, backgroundColor: '#10B981', position: 'absolute', borderRadius: 150, bottom: -72, right: -66 }}></View>
-      <View style={{ width: 300, height: 300, backgroundColor: '#FFA500', position: 'absolute', borderRadius: 150, top: -72, left: -66 }}></View>
       <Text h4 style={styles.title}>3x3 Matrix Transpose Calculator</Text>
       <View style={styles.inputContainer}>
         {matrix.map((row, rowIndex) => (
@@ -65,14 +62,12 @@ export default function App() {
         </View>
       )}
     </SafeAreaView>
-    </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    position: 'relative',
     paddingHorizontal: 20,
     paddingVertical: 48,
     backgroundColor: '#fff',
@@ -87,6 +82,7 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems:ceilDependenciest
     marginBottom: 10,
   },
   input: {
@@ -103,5 +99,6 @@ const styles = StyleSheet.create({
   },
   resultInput: {
     flex: 1,
+    backgroundColor: '#f2f2f2',
   },
 });
