@@ -19,12 +19,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/logo3.png",
+        "foregroundImage": "./assets/",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
-      "favicon": "./assets/logo3.png"
+      "favicon": "./assets/favicon.png"
     }
   }
 }
